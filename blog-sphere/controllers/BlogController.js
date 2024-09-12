@@ -22,10 +22,8 @@ export const adicionarComentario = async (req, res) => {
 export const avaliarPublicacao = async (req, res) => {
   try {
     const { id, avaliacao } = req.body; // Assume que o ID da publicação e a avaliação são passados no corpo da requisição
-    if (avaliacao < 0 || avaliacao > 5) {
-      return res.status(400).json({ message: 'Avaliação deve estar entre 0 e 5' });
-    }
 
+    
     const blog = await Blog.findOne({ Id: id });
     if (!blog) {
       return res.status(404).json({ message: 'Publicação não encontrada' });
